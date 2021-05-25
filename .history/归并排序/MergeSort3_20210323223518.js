@@ -7,8 +7,19 @@
     return nums
 }
 
-var MergePass = function(sr, tr1, s, t){
-   
+var Msort = function(sr, tr1, s, t){
+   let m
+   let tr2 = []
+   if(s === t){
+       tr1[s] = sr[s]
+    //    console.log(tr1[s])
+   }
+   else{
+       m = Math.floor((s + t) / 2)
+       Msort(sr, tr2, s, m)
+       Msort(sr, tr2, m+1, t)
+       Merge(tr2, tr1, s, m, t)
+   }
 }
 
 var Merge = function(sr, tr, i, m, n){
