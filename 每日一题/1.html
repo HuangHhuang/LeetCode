@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 300px;
+            height: 500px;
+            /* margin: auto; */
+            /* position: relative;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0; */
+            /* padding:auto; */
+            display: flex;
+            align-items: center;
+        }
+        #a { 
+            width: 100px;
+            height: 100px;
+            background-color:red;
+        }
+        #c { 
+            width: 100px;
+            height: 100px;
+            background-color:blue;
+        }
+        #b { 
+            width: 100px;
+            height: 100px;
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="a"></div>
+        <div id="b"></div>
+        <div id="c"></div>
+    </div>
+    <script>
+        var test1 = "String"
+        var test2 = new String("String")
+        console.log(test1.constructor.toString()=="function String() { [native code] }")
+        console.log(test2.constructor.toString()=="function String() { [native code] }")
+    </script>
+</body>
+</html>

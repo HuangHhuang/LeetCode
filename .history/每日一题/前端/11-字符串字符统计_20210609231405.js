@@ -15,7 +15,7 @@ function count(str) {
     return obj
 }
 
-console.log(count2('hello world'))
+console.log(count('hello world'))
 
 
 //牛客最优解法

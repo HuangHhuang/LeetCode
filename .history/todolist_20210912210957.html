@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            line-height: 1;
+            list-style: none;
+        }
+
+        .todo {
+            width: 300px;
+            /* margin: 1em auto 3em; */
+            border: 1px solid #efefef;
+        }
+
+        .thing-input {
+            border: 1px solid #dedede;
+            padding-left: 10px;
+            width: 70%;
+            height: 35px;
+        }
+
+        /* .listul ul li input, ul, li{
+            margin: 0 ;
+            padding: 0;
+            border: 0;
+        } */
+
+        .list li{
+            border: 1px solid #dedede;
+            width: 70%;
+            height: 35px;
+            list-style: none;
+        }
+
+        .list li button{
+            border:1px solid #aaaaaa;
+            visibility: hidden;
+        }
+
+        .list li:hover > button{
+            visibility: visible;
+        }
+
+        .list li label {
+            display: inline-block;
+            width: 70%;
+            z-index: 2;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class = "todo">
+     <input type="text" placeholder="请输入待办事项" class="thing-input" onkeypress="getKey();" id="thing">
+     <input type="button" onclick="addListDo()" value="添加">
+         <section>
+             <ul class="list-item" id="listul">
+
+             </ul>
+         </section>
+    </div>
+    
+    <script>
+        function ToDo(thing) {
+            this.thing = thing;
+        }
+        function add(labelText) {
+            var para = document.createElement("li");
+            var element = document.getElementById("listul");
+            element.appendChild(para);
+
+            var inp = document.createElement("input");
+            inp.type = "checkbox";
+            // inp.onclick = isAll;
+
+            element.lastChild.appendChild(inp);
+
+            var lb = document.createElement("label");
+            lb.appendChild(document.createTextNode(labelText));
+            element.lastChild.appendChild(lb);
+
+            var butt = document.createElement("button");
+            butt.appendChild(document.createTextNode("x"));
+            element.lastChild.appendChild(butt);
+            butt.onclick = function(){
+                butt.parentNode.parentNode.removeChild(butt.parentNode);
+            }
+        }
+
+        function addListDo() {
+            var labelText = document.getElementById("thing").value;
+
+            if(labelText == "" || labelText == null) return;
+            else{
+                add(labelText);
+                document.getElementById("thing").value = "";
+            }
+        }
+
+        function getKey() {
+            if(event.keyCode === 13){
+                addListDo();
+            }
+        }
+    </script>
+</body>
+</html>

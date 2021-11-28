@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            div{
+                width: 100px; height: 100px; background-color:red;
+            }
+        </style>
+    </head>
+     <body>
+        <div onclick="alert(this.title)" title="AA">
+            
+        </div>
+        <script>
+            let tt1 = new (function () {return null;});
+            console.log("tt1" + tt1)
+            let tt2 = new (function () {this.xx = 1; return null});
+            console.log("tt2" + tt2.xx)
+            // (function (){alert(this)}).apply(null)
+
+        </script>
+     </body>
+     
+</html>

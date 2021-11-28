@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "todo">
+     <input type="text" placeholder="请输入待办事项" class="thing-input" onkeypress="getKey();" id="thing">
+     <input type="button" onclick="addListDo()" placeholder="添加">
+         <section>
+             <ul class="list-item" id="listul">
+
+             </ul>
+         </section>
+    </div>
+    
+    <script>
+        function ToDo(thing) {
+            this.thing = thing;
+        }
+        function add(labelText) {
+            var para = document.createElement("li");
+            var element = document.getElementById("listul");
+            element.appendChild(para);
+
+            var inp = document.createElement("input");
+            inp.type = "checkbox";
+            // inp.onclick = isAll;
+
+            element.lastChild.appendChild(inp);
+
+            var lb = document.createElement("label");
+            lb.appendChild(document.createTextNode(labelText));
+            element.lastChild.appendChild(lb);
+
+            var butt = document.createElement("button");
+            butt.appendChild(document.createTextNode("x"));
+            element.lastChild.appendChild(butt);
+            butt.onclick = function(){
+                butt.parentNode.parentNode.removeChild(butt.parentNode);
+            }
+        }
+
+        function addListDo() {
+            var labelText = document.getElementById("thing").value;
+
+            if(labelText == "" || labelText == null) return;
+            else{
+                console.log(labelText)
+                add(labelText);
+                document.getElementById("thing").value = "";
+            }
+        }
+
+        function getKey() {
+            if(event.keyCode === 13){
+                addListDo();
+            }
+        }
+    </script>
+</body>
+</html>

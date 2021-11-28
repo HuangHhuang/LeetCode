@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var salesOffices = {};
+
+        /* 非封装写法 */
+
+        // salesOffices.clientList = [];
+
+        // salesOffices.listen = function(key, fn) {
+        //     if(!this.clientList[key]){
+        //         this.clientList[key] = [];
+        //     }
+        //     this.clientList[key].push(fn);
+        // }
+
+        // salesOffices.trigger = function() {
+        //     var key = Array.prototype.shift.call(arguments);
+        //     var fns = this.clientList[key];
+        //     for (var i = 0; i < fns.length; i++) {
+        //         fns[i].apply(this, arguments);
+        //     }
+        // }
+
+        /* 封装对象写法 */
+
+        // var Event = {
+        //     clientList: [],
+        //     listen: function(key, fn) {
+        //         if(!this.clientList[key]){
+        //             this.clientList[key] = [];
+        //         }
+        //         this.clientList[key].push(fn);
+        //     },
+        //     trigger: function() {
+        //         var key = Array.prototype.shift.call(arguments);
+        //         var fns = this.clientList[key];
+        //         for (var i = 0; i < fns.length; i++) {
+        //             fns[i].apply(this, arguments);
+        //         }
+        //     }
+        // }
+
+        // function installEvent(target, source) {
+
+        //     return Object.assign(target, source);
+
+        //     // for(var i in source) {
+        //     //     target[i] = source[i];
+        //     // }
+
+        //     // return target;
+        // }
+
+        // salesOffices = installEvent(salesOffices, Event);
+
+        /* 继承类写法 */
+
+        class Event{
+            constructor(){
+                this.clientList = [];
+            }
+            listen(key, fn) {
+                if(!this.clientList[key]){
+                    this.clientList[key] = [];
+                }
+                this.clientList[key].push(fn);
+            }
+            trigger() {
+                var key = Array.prototype.shift.call(arguments);
+                var fns = this.clientList[key];
+                for (var i = 0; i < fns.length; i++) {
+                    console.log(fns[i])
+                    fns[i].apply(this, arguments);
+                }
+            }
+            remove(key, fn) {
+                var fns = this.clientList[key];
+
+                if(!fns) return false;
+                if(!fn){
+                    fns.splice(0, fns.length);
+                }
+                else{
+                    for(var l = fns.length; l >= 0; l--){
+                        var _fn = fns[l];
+                        if(_fn == fn){
+                            fns.splice(l, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        class SalesOffice extends Event {
+            constructor(){
+                super();
+            }
+        }
+
+        var salesOffices = new SalesOffice();
+
+        var fn1 = function(price, squareMeter) {
+            console.log('fn1价格'+ price);
+            console.log('fn1面积' + squareMeter);
+        };
+        salesOffices.listen("88", fn1);
+
+        var fn2 = function(price, squareMeter) {
+            console.log('fn2价格'+ price);
+            console.log('fn2面积' + squareMeter);
+        }
+        salesOffices.listen("88", fn2);
+
+        salesOffices.listen("108", function(price, squareMeter) {
+            console.log('价格'+ price);
+            console.log('面积' + squareMeter);
+        })
+
+        // salesOffices.remove("88");
+
+        salesOffices.trigger("88", 1000, "88");
+    </script>
+</body>
+</html>

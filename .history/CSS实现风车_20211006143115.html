@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            left: 50%;
+            margin-left: -50px;
+            transform-style: preserve-3d;
+            /* animation: sport 18s linear 0s infinite normal; */
+        }
+        @keyframes sport{
+            form{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        ul li{
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 50px solid transparent;
+            list-style: none;
+        }
+        .one {
+            border-bottom: 50px solid #ECF0F1;
+            transform: translateY(0px) rotateZ(45deg);
+        }
+        .two {
+            border-bottom: 50px solid #95A5A5;
+            transform: translate(80px, 80px) rotateZ(135deg);
+        }/* 
+        .three {
+            border-bottom: 50px solid #ECF0F1;
+            transform: translateY(80px) rotateZ(225deg);
+        }
+        .four {
+            border-bottom: 50px solid #95A5A5;
+            transform: translateY(-80px) rotateZ(315deg);
+        } */
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li class="one"></li>
+            <li class="two"></li>
+            <li class="three"></li>
+            <li class="four"></li>
+        </ul>
+    </div>
+</body>
+</html>
