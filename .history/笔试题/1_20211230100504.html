@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const objA = { a : 1 };
+        const arrB = [1, 2, 3, 4];
+        const stringC = "stringC";
+        const numD = 1;
+
+        const output = (function() {
+            delete objA.a;
+            delete arrB[0];
+            delete stringC[0];
+            delete numD
+            return [objA.a, arrB[0], stringC, numD];
+        })();
+
+        console.log(output)
+    </script>
+</body>
+</html>

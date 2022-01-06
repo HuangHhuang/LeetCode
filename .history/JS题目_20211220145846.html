@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        let a = 1
+        function b(a) {
+            a = 2
+            console.log(a)
+        }
+        b(a)
+        console.log(a) 
+        */
+
+        /* function a(b = c, c = 1) {
+            console.log(b, c)
+        }
+        a() */
+
+        /* let a = b = 10;
+        (function() {
+            let a = b = 20
+        })()
+        console.log(a)
+        console.log(b) */
+
+        /* var a = {n : 1}
+        var b = a
+        a.x = a = {n : 2}
+        console.log(a.x)
+        console.log(b.x) */
+
+        /* var arr = [0, 1, 2]
+        arr[10] = 10
+        console.log(arr)
+        console.log(arr.filter(function (x) { 
+            return x === undefined
+        })) */
+
+        /* var name = 'World';
+        (function () {
+            if(typeof name === 'undefined') {
+                var name = 'Jack'
+                console.log('Goodbye '+ name)
+            } else {
+                console.log('Hello ' + name)
+            }
+        })() */
+        
+        console.log(1 + NaN)
+        console.log("1" + 3)
+        console.log(1 + undefined)
+        console.log(1 + null)
+        console.log(1 + [])
+        console.log(1 + {})
+        console.log([] + {})
+    </script>
+</body>
+</html>
